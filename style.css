@@ -1,51 +1,99 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #3498db; /* Alterado para uma cor mais atraente */
-    color: #ffffff; /* Texto em branco para melhor contraste */
+    background-color: rgb(0, 174, 255);
+    color: #ffffff;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column; /* Alterado para coluna para empurrar o conteúdo para o topo */
+    flex-direction: column;
     align-items: center;
     height: 100vh;
 }
 
 .container {
     text-align: center;
-    margin-top: 50px; /* Adicionado margem no topo para empurrar para baixo */
+    margin: 20px auto; /* Centraliza o container e adiciona margem nas laterais */
 }
 
 .header {
-    background-color: #2c3e50; /* Cor de fundo do cabeçalho */
+    background-color: #2c3e50;
     padding: 20px;
-    border-radius: 10px; /* Borda arredondada */
+    border-radius: 10px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .header h1 {
     margin: 0;
+    color: #ffffff;
+}
+
+.user-options button {
+    padding: 10px;
+    margin-left: 10px;
+    background-color: #e74c3c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.user-options button:hover {
+    background-color: #c0392b;
 }
 
 .input-container {
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo semi-transparente */
-    padding: 20px;
+    background-color: #34495e;
+    padding: 5vw;
     border-radius: 10px;
+    margin-top: 5vh;
+    width: 80%; /* Reduzi a largura para 80% */
+    max-width: 400px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#user-input label {
+.input-container label {
     display: block;
     margin-bottom: 10px;
+    color: #ffffff;
 }
 
-#user-input input,
-#user-input button {
+.input-container input {
     padding: 10px;
     margin-bottom: 10px;
     font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #2c3e50;
+    color: #ffffff;
+    border: 1px solid #34495e;
+    border-radius: 5px;
+}
+
+.input-container button {
+    padding: 10px;
+    font-size: 1em;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-container button:hover {
+    background-color: #2980b9;
 }
 
 #greeting-container {
-    background-color: #27ae60; /* Cor de fundo do container de saudação */
+    background-color: #27ae60;
     padding: 20px;
     border-radius: 10px;
     display: none;
@@ -56,57 +104,37 @@ body {
     margin: 0;
     color: #ffffff;
 }
-/* ... (código anterior) */
 
 .image-grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(3,1fr); /* Agora exibe 5 imagens por linha */
     gap: 10px;
     margin-top: 20px;
 }
 
 .image-item {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
     overflow: hidden;
     border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
 }
 
 .image-item img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
 }
 
 .image-item img:hover {
     transform: scale(1.1);
-}
-.header {
-    background-color: #2c3e50;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header h1 {
-    margin: 0;
-}
-
-.user-options {
-    display: flex;
-    align-items: center;
-}
-
-.user-options button {
-    padding: 10px;
-    margin-left: 10px;
-}
-
-.greeting {
-    color: #ffffff;
-    font-weight: bold;
 }
 
 /* Estilos para o modal de cadastro */
@@ -121,13 +149,15 @@ body {
 }
 
 .modal-content {
-    background-color: #ffffff;
+    background-color: #2c3e50;
+    color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     position: absolute;
     top: 20%;
     left: 50%;
     transform: translateX(-50%);
+    max-width: 400px; /* Defina a largura máxima conforme necessário */
 }
 
 .close {
@@ -136,4 +166,65 @@ body {
     right: 10px;
     font-size: 1.5em;
     cursor: pointer;
+}
+
+/* Estilos responsivos */
+@media screen and (max-width: 600px) {
+    .container {
+        margin-top: 20px;
+    }
+
+    .input-container {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .image-grid-container {
+        margin-top: 10px;
+    }
+
+    .image-item {
+        height: 120px;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    .container {
+        margin-top: 30px;
+    }
+
+    .input-container {
+        width: 80%;
+        padding: 15px;
+    }
+
+    .image-item {
+        height: 130px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .container {
+        margin-top: 50px;
+    }
+
+    .input-container {
+        width: 70%;
+        padding: 20px;
+    }
+
+    .image-item {
+        height: 150px;
+    }
+}
+
+/* Estilos para o rodapé */
+.footer {
+    background-color: #2c3e50;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
